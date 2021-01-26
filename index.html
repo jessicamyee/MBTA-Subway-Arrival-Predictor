@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./style.css">
+  <script defer src="./app.js"></script>
+  <title>MBTA Subway Predictor</title>
+</head>
+
+<body>
+  <header>
+    <!-- Insert Title of page here with maybe a background banner? -->
+  </header>
+
+  <figure>
+    <img src="./images/mbta-subway-map.jpg" alt="MBTA subway map">
+    <figcaption>Fig1. - Map of Boston subway routes </figcaption>
+  </figure>
+
+  <form>
+    <!-- Insert filter dropdown menu (https://www.w3schools.com/howto/howto_js_filter_dropdown.asp) -->
+
+    <div class="dropdown menu">
+      <button class="dropdown-button">Select Station</button>
+      <div class="dropdown-items">
+        <input type="text" id="myInput" placeholder="Search station" onkeyup="filterFunction()">
+        <!-- onkeyup dictates what to do when you start typing. In this case, when you start typing the filterFunction gets triggered -->
+
+        <!-- The following dictates the list from the dropdown menu -->
+        <a href="#Blah">Blah</a>
+      </div>
+    </div>
+
+
+
+
+
+  </form>
+
+  <section class="prediction-results">
+    <!-- This is where the prediction results will populate via DOM -->
+  </section>
+
+  <section id="prediction-followup">
+    <!-- This is where the follow-up pop-up will appear depending on the prediction, via DOM. -->
+  </section>
+
+  <section class="resource-list">
+    <h2>Additional resources for your MBTA experience:</h2>
+    <u>
+      <li><a href="https://www.mbta.com/schedules/subway">Subway Schedules</a></li>
+      <li><a href="https://www.mbta.com/schedules/bus">Bus Schedules</a></li>
+      <li><a href="https://www.mbta.com/stops/subway">Subway & Bus Station Information</a></li>
+
+    </u>
+  </section>
+
+  <section class="twitter-feed">
+    <!-- For post-MVP, to embed Twitter feed -->
+  </section>
+
+  <footer>
+    <!-- This is where the Social Media icons will appear -->
+
+    <!-- Fb: https://www.facebook.com/TheMBTA/
+    IG: https://www.instagram.com/thembta/?hl=en
+    Twitter: https://twitter.com/MBTA?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor -->
+
+  </footer>
+
+
+</body>
+
+</html>
