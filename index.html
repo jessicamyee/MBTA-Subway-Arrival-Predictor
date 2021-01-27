@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./style.css">
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <script defer src="./app.js"></script>
   <title>MBTA Subway Predictor</title>
 </head>
@@ -20,25 +21,33 @@
     <!-- Image source: (https://cambooth.net/boston-mbta-map-redesign/) -->
   </figure>
 
-  <form>
-    <!-- Insert filter dropdown menu (https://www.w3schools.com/howto/howto_js_filter_dropdown.asp) -->
+  <!-- <form> -->
+  <!-- Insert filter dropdown menu (https://www.w3schools.com/howto/howto_js_filter_dropdown.asp) -->
 
-    <div class="dropdown menu">
-      <button class="dropdown-button">Select Station</button>
-      <div class="dropdown-items">
-        <input type="text" id="myInput" placeholder="Search station" onkeyup="filterFunction()">
-        <!-- onkeyup dictates what to do when you start typing. In this case, when you start typing the filterFunction gets triggered -->
+  <!-- <div class="dropdown menu">
+    <button class="dropdown-button">Select Station</button>
+    <div class="dropdown-items">
+      <input type="text" id="myInput" placeholder="Search station" onkeyup="filterFunction()"> -->
+  <!-- onkeyup dictates what to do when you start typing. In this case, when you start typing the filterFunction gets triggered -->
 
-        <!-- The following dictates the list from the dropdown menu -->
-        <a href="#Blah">Blah</a>
-      </div>
+  <!-- The following dictates the list from the dropdown menu -->
+  <!-- <a href="#Blah">Blah</a>
     </div>
+  </div>
+  </form> -->
 
 
+  <form>
+    <select name='station' id='select-station'>
+      <option>Choose a station!</option>
+    </select>
 
-
-
+    <button>Submit!</button>
   </form>
+
+
+
+
 
   <section class="prediction-results">
     <!-- This is where the prediction results will populate via DOM -->
