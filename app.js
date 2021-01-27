@@ -4,16 +4,44 @@
 //TODO this is a todo
 //? This is a question
 
+//*API URL to see list of Subway stops (their ID, parent station) 
+let stopsUrl = 'https://api-v3.mbta.com/stops?include=parent_station&filter[route_type]=1&api_key=1d4b621e1f544709887699295f22b466'
+
+
+
+
+const getSubwayStops = async () => {
+  try {
+    let response = await axios.get(stopsUrl)
+    console.log(response)
+    let rawList = response.data.data
+    getSubwayStationList(rawList);
+  } catch (error) {
+    console.log(error)
+  }
+}
+getSubwayStops()
+
+
+const getSubwayStationList = (rawList) => {
+  let select = document.querySelector('#select-station')
+  rawList.forEach(stop => {
+    let option = document.createElement('option')
+    option.value = stop.attributes.description
+    option.textContent = stop.attributes.description
+    select.append(option)
+  });
+}
+
+//TODO: Use array.filter to retrieve "filter[stop] = place-nqncy (aka the parent station) to get the Prediction times!"
+// const parentStation = rawList.
+
+// let predictionUrl = `https://api-v3.mbta.com/predictions?filter[stop]=${parentStation}`
+
 
 
 //TODO: Create event listener/handler -- User clicks onto the dropdown to see a list of the stations 
 
-//?How can we populate just the names of the stations? Can we just easily retrieve and populate the stations names (1) or will we need to embed (in the HTML) a "Station Key" that tells the user which ID number to select corresponding to the right station (2)?
-//* For (1): 
-
-
-
-//* For (2):
 
 
 
@@ -25,7 +53,6 @@
 
 //TODO: Create event listener/handler -- User clicks on the "Submit" button and the submission will be the "searcher" in the API database 
 
-//? How does selecting the item TALK to the API database to pull the correct information.
 
 
 
