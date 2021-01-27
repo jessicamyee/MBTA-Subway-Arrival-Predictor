@@ -83,7 +83,7 @@ API used: [Massachusetts Bay Transportation Authority (MBTA)](https://api-v3.mbt
 | Pseudocode the primary feature: subway arrival prediction retrieval | H | 2hrs| 0.75hr | 0.75hr |
 | Scope out the MBTA API and note down the paths to retrieve the needed data based on pseudocode | H | 3hrs| 2 | 2 |
 | QA and debugging for event listeners set-up | H | 1hr|  |  |
-| Integrate API for the Predictor feature and ensure data can be retrieved via console first | H | 3hrs|  |  |
+| Integrate API for the Predictor feature and ensure data can be retrieved via console first | H | 3hrs| 1hr | 1hr |
 | QA and debugging for API integration | H | 2hrs|  |  |
 | Connect API integration with event listener to ensure text does populate on the webpage itself (Part 1) | H | 3hrs|  |  |
 | Connect API integration with event listener to ensure text does populate on the webpage itself (Part 2) | H | 3hrs|  |  |
