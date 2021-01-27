@@ -9,7 +9,7 @@ let stopsUrl = 'https://api-v3.mbta.com/stops?include=parent_station&filter[rout
 
 
 
-
+//This is the primary function to run everything. 
 const getSubwayStops = async () => {
   try {
     let response = await axios.get(stopsUrl)
@@ -23,6 +23,7 @@ const getSubwayStops = async () => {
 getSubwayStops()
 
 
+//This is the function to retrieve the list of stations in the dropdown menu
 const getSubwayStationList = (rawList) => {
   let select = document.querySelector('#select-station')
   rawList.forEach(stop => {
@@ -33,15 +34,42 @@ const getSubwayStationList = (rawList) => {
   });
 }
 
+
+
+//TODO: Create event listener/handler -- User clicks on the "Submit" button and the submission will be the "searcher" in the API database 
+
+const getStationValue = (e) => {
+  e.preventDefault()
+  let stationValue = document.querySelector('#select-station').value
+  //! Need to reference removePredictionResults function
+  getPrediction(stationValue)
+}
+
+const form = document.querySelector('form')
+form.addEventListener('submit', getStationValue)
+
+
+const getPrediction = async () => {
+  try {
+    console.log("Hey, you got a prediction!")
+    // let response = await axios.get()
+    // displayPrediction()
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+
+// const displayPrediction = () => {
+//   let prediction = document.createElement('p')
+//   let div = document.querySelector('.prediction-results')
+//   div.append(prediction)
+// }
+
 //TODO: Use array.filter to retrieve "filter[stop] = place-nqncy (aka the parent station) to get the Prediction times!"
 // const parentStation = rawList.
 
 // let predictionUrl = `https://api-v3.mbta.com/predictions?filter[stop]=${parentStation}`
-
-
-
-//TODO: Create event listener/handler -- User clicks onto the dropdown to see a list of the stations 
-
 
 
 
@@ -51,7 +79,6 @@ const getSubwayStationList = (rawList) => {
 
 
 
-//TODO: Create event listener/handler -- User clicks on the "Submit" button and the submission will be the "searcher" in the API database 
 
 
 
