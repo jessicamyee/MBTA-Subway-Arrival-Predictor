@@ -8,14 +8,14 @@
 let stopsUrl = 'https://api-v3.mbta.com/stops?include=parent_station&filter[route_type]=1&api_key=1d4b621e1f544709887699295f22b466'
 
 
+let rawList = null;
 
-//This is the primary function to run everything. 
 const getSubwayStops = async () => {
   try {
     let response = await axios.get(stopsUrl)
-    console.log(response)
-    let rawList = response.data.data
-    getSubwayStationList(rawList);
+    // console.log(response)
+    rawList = response.data.data
+    populateDropdown(rawList);
   } catch (error) {
     console.log(error)
   }
@@ -23,8 +23,8 @@ const getSubwayStops = async () => {
 getSubwayStops()
 
 
-//This is the function to retrieve the list of stations in the dropdown menu
-const getSubwayStationList = (rawList) => {
+//* This is the function to retrieve the list of stations in the dropdown menu
+const populateDropdown = (rawList) => {
   let select = document.querySelector('#select-station')
   rawList.forEach(stop => {
     let option = document.createElement('option')
@@ -34,48 +34,116 @@ const getSubwayStationList = (rawList) => {
   });
 }
 
-
-
-//TODO: Create event listener/handler -- User clicks on the "Submit" button and the submission will be the "searcher" in the API database 
-
-const getStationValue = (e) => {
-  e.preventDefault()
-  let stationValue = document.querySelector('#select-station').value
-  //! Need to reference removePredictionResults function
-  getPrediction(stationValue)
+//* Given the raw list of stops and selected description (aka the station the user selects) and returns the corresponding parent station
+const getParentStationFromDescr = (rawList, selectedDescription) => {
+  let targetStop = null;
+  //TODO: Find the stop in Rawlist where "stop.attributes.description" === dropdown value
+  rawList.forEach(stop => {
+    if (selectedDescription === stop.attributes.description) {
+      targetStop = stop;
+    }
+  })
+  return targetStop.relationships.parent_station.data.id;
 }
 
-const form = document.querySelector('form')
-form.addEventListener('submit', getStationValue)
 
 
-const getPrediction = async () => {
+const getPrediction = async (e) => {
+  e.preventDefault()
+  let description = document.querySelector('#select-station').value
+  // console.log(description)
+  let station = getParentStationFromDescr(rawList, description)
+  // console.log(station)
+  let predictionURL = `https://api-v3.mbta.com/predictions?filter[stop]=${station}&api_key=1d4b621e1f544709887699295f22b466`
   try {
-    console.log("Hey, you got a prediction!")
-    // let response = await axios.get()
-    // displayPrediction()
+    let response = await axios.get(predictionURL)
+    console.log(response)
+    //TODO: Code to create DOM elements to display prediction time, route, direction
+    // getArrivalTime()
+    // getRouteName()
+    // getDirectionId()
   } catch (error) {
     console.log(error)
   }
 }
 
+const form = document.querySelector('form')
+form.addEventListener('submit', getPrediction)
 
-// const displayPrediction = () => {
-//   let prediction = document.createElement('p')
-//   let div = document.querySelector('.prediction-results')
-//   div.append(prediction)
+
+
+
+// //! Create function that loops through all prediction results to retrieve the prediction time
+
+// let predictionSection = document.querySelector('.prediction-results')
+// let rawPredictionList = response.data.data
+
+
+// const getArrivalTime = (rawPredictionList) => {
+//   rawPredictionList.forEach(prediction => {
+//     let arrivalTime = document.createElement('p')
+//     arrivalTime.value = attributes.arrival_time
+//     arrivalTime.textContent = attributes.arrival_time
+//     predictionSection.append(arrivalTime)
+//   })
 // }
 
-//TODO: Use array.filter to retrieve "filter[stop] = place-nqncy (aka the parent station) to get the Prediction times!"
-// const parentStation = rawList.
+// //! Create function that loops through all prediction results to retrieve the route name
+// const getRouteName = (rawPredictionList) => {
+//   rawPredictionList.forEach(prediction => {
+//     let routeName = document.createElement('p')
+//     routeName.value = relationships.route.data.id
+//     routeName.textContent = relationships.route.data.id
+//     predictionSection.append(routeName)
+//   })
+// }
 
-// let predictionUrl = `https://api-v3.mbta.com/predictions?filter[stop]=${parentStation}`
+// //! Create function that loops through all prediction results to retrieve the direction id
+// const getDirectionId = (rawPredictionList) => {
+//   rawPredictionList.forEach(prediction => {
+//     let directionId = document.createElement('p')
+//     directionId.value = attributes.direction_id
+//     directionId.textContent = attributes.direction_id
+//     predictionSection.append(directionId)
+//   })
+// }
 
 
 
 
-//TODO: Write function - so that the dropdown menu also has a search capability
-//*This will be a generic function
+// //TODO: Part 3 - Return only the first 2 sets of prediction times
+
+
+
+// //TODO: Part 4 - Create nested conditional logic that would show direction in plain English
+
+// //*some pseudocoding here, because unsure what the route ID name is. Is it routeName.value?
+
+
+// if (route_id === 'Red' || route_id === 'Orange') {
+//   if (direction_id === 0) {
+//     //TODO: Display "Southbound"
+//   } else {
+//     //TODO: Display "Northbound"
+//   }
+// } else if (
+//   route_id === 'Blue' ||
+//   route_id === 'Green-B' ||
+//   route_id === 'Green-C' ||
+//   route_id === 'Green-D' ||
+//   route_id === 'Green-E') {
+//   if (direction_id === 0) {
+//     //TODO: Display "Westbound"
+//   } else {
+//     //TODO: Display "Eastbound"
+//   }
+// } else (route_id === 'Mattapan') {
+//   if (direction_id === 0) {
+//     //TODO: Display "Outbound"
+//   } else {
+//     //TODO: Display "Inbound"
+//   }
+// }
 
 
 
@@ -83,8 +151,30 @@ const getPrediction = async () => {
 
 
 
-//TODO: DOM create element -- a <p> tag is created that will display the first prediction. Prediction time will be stored in a variable inside the <p> tag
-//! Prediction to include: Time, Station, Directionality, Reference that this is the soonest prediction
+
+
+
+
+
+//TODO: Convert the military time to 12-hour interval time, and ensure it's East Coast-based no matter where the browser/computer is located.
+//* Should just be a general function, though the input would be a reference from the API database 
+
+
+
+
+//* Input consist of the predicted time. Will need to compare that against the user's computer current timestamp and determine time difference. 
+//? Will I need to computer to determine the difference, or will they be able to auto-compute?
+
+
+
+//TODO: Create if/else logic for the Prediction. If prediction is >5 minutes away from current time, display pop-up "You still got time! But make sure you get there." If prediction is >5 minutes from current time, display pop-up "Looks like you'll need to skedaddle!" Easter egg: If you're viewing the time for the last train of the day AND it's <10 minutes away, display pop-up "Last train of the day, or you'll need to take a Lyft!"
+//! Will need to make a note that the time is NOT automatically refreshed. 
+
+
+
+
+
+
 
 
 
@@ -93,13 +183,5 @@ const getPrediction = async () => {
 //! Prediction to include: Time, Station, Directionality, Reference that this is the  prediction for the subway following the first.
 
 
-
-//TODO: Convert the military time to 12-hour interval time, and ensure it's East Coast-based no matter where the browser/computer is located.
-//* Should just be a general function, though the input would be a reference from the API database 
-
-
-//TODO: Create if/else logic for the Prediction. If prediction is >5 minutes away from current time, display pop-up "You still got time! But make sure you get there." If prediction is >5 minutes from current time, display pop-up "Looks like you'll need to skedaddle!" Easter egg: If you're viewing the time for the last train of the day AND it's <10 minutes away, display pop-up "Last train of the day, or you'll need to take a Lyft!"
-//! Will need to make a note that the time is NOT automatically refreshed. 
-
-//* Input consist of the predicted time. Will need to compare that against the user's computer current timestamp and determine time difference. 
-//? Will I need to computer to determine the difference, or will they be able to auto-compute?
+//TODO: Write function - so that the dropdown menu also has a search capability
+//*This will be a generic function
