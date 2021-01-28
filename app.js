@@ -57,11 +57,9 @@ const getPrediction = async (e) => {
   let predictionURL = `https://api-v3.mbta.com/predictions?filter[stop]=${station}&api_key=1d4b621e1f544709887699295f22b466`
   try {
     let response = await axios.get(predictionURL)
-    console.log(response)
-    //TODO: Code to create DOM elements to display prediction time, route, direction
-    // getArrivalTime()
-    // getRouteName()
-    // getDirectionId()
+    response.data.data.forEach(prediction => {
+      createPredictionBox(prediction)
+    })
   } catch (error) {
     console.log(error)
   }
@@ -72,46 +70,40 @@ form.addEventListener('submit', getPrediction)
 
 
 
-
-// //! Create function that loops through all prediction results to retrieve the prediction time
-
-// let predictionSection = document.querySelector('.prediction-results')
-// let rawPredictionList = response.data.data
+let predictionSection = document.querySelector('.prediction-results')
 
 
-// const getArrivalTime = (rawPredictionList) => {
-//   rawPredictionList.forEach(prediction => {
-//     let arrivalTime = document.createElement('p')
-//     arrivalTime.value = attributes.arrival_time
-//     arrivalTime.textContent = attributes.arrival_time
-//     predictionSection.append(arrivalTime)
-//   })
-// }
+const createPredictionBox = (prediction) => {
+  let predictionBox = document.createElement('div')
+  predictionSection.append(predictionBox)
+  let arrivalTime = document.createElement('p')
+  let routeName = document.createElement('p')
+  let directionId = document.createElement('p')
 
-// //! Create function that loops through all prediction results to retrieve the route name
-// const getRouteName = (rawPredictionList) => {
-//   rawPredictionList.forEach(prediction => {
-//     let routeName = document.createElement('p')
-//     routeName.value = relationships.route.data.id
-//     routeName.textContent = relationships.route.data.id
-//     predictionSection.append(routeName)
-//   })
-// }
 
-// //! Create function that loops through all prediction results to retrieve the direction id
-// const getDirectionId = (rawPredictionList) => {
-//   rawPredictionList.forEach(prediction => {
-//     let directionId = document.createElement('p')
-//     directionId.value = attributes.direction_id
-//     directionId.textContent = attributes.direction_id
-//     predictionSection.append(directionId)
-//   })
-// }
+  arrivalTime.value = prediction.attributes.arrival_time
+  //TODO: Fix routeName.value's value
+  routeName.value = prediction.relationships.route.data.id
+  directionId.value = prediction.attributes.direction_id
+
+
+
+  arrivalTime.textContent = `Predicted Arrival Time: ${arrivalTime.value}`
+  routeName.textContent = `Route: ${routeName.value}`
+  directionId.textContent = `Direction: ${directionId.value}`
+
+  predictionBox.append(arrivalTime)
+  predictionBox.append(routeName)
+  predictionBox.append(directionId)
+}
 
 
 
 
-// //TODO: Part 3 - Return only the first 2 sets of prediction times
+
+
+
+// //TODO: Part 3 - Return only the first 2 sets of prediction times in which arrival time is NOT null
 
 
 
@@ -167,7 +159,7 @@ form.addEventListener('submit', getPrediction)
 
 
 
-//TODO: Create if/else logic for the Prediction. If prediction is >5 minutes away from current time, display pop-up "You still got time! But make sure you get there." If prediction is >5 minutes from current time, display pop-up "Looks like you'll need to skedaddle!" Easter egg: If you're viewing the time for the last train of the day AND it's <10 minutes away, display pop-up "Last train of the day, or you'll need to take a Lyft!"
+//TODO FUTURE: Create if/else logic for the Prediction. If prediction is >5 minutes away from current time, display pop-up "You still got time! But make sure you get there." If prediction is >5 minutes from current time, display pop-up "Looks like you'll need to skedaddle!" Easter egg: If you're viewing the time for the last train of the day AND it's <10 minutes away, display pop-up "Last train of the day, or you'll need to take a Lyft!"
 //! Will need to make a note that the time is NOT automatically refreshed. 
 
 
@@ -175,12 +167,6 @@ form.addEventListener('submit', getPrediction)
 
 
 
-
-
-
-
-//TODO: DOM create element -- a second <p> tag is created that will display the second prediction. 
-//! Prediction to include: Time, Station, Directionality, Reference that this is the  prediction for the subway following the first.
 
 
 //TODO: Write function - so that the dropdown menu also has a search capability
