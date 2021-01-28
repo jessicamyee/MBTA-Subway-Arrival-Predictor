@@ -54,7 +54,10 @@ const getPrediction = async (e) => {
   // console.log(description)
   let station = getParentStationFromDescr(rawList, description)
   // console.log(station)
-  let predictionURL = `https://api-v3.mbta.com/predictions?filter[stop]=${station}&api_key=1d4b621e1f544709887699295f22b466`
+  let predictionURL = `https://api-v3.mbta.com/predictions?filter[route_type]=1&filter[stop]=${station}&api_key=1d4b621e1f544709887699295f22b466`
+
+
+
   try {
     let response = await axios.get(predictionURL)
     response.data.data.forEach(prediction => {
@@ -82,7 +85,6 @@ const createPredictionBox = (prediction) => {
 
 
   arrivalTime.value = prediction.attributes.arrival_time
-  //TODO: Fix routeName.value's value
   routeName.value = prediction.relationships.route.data.id
   directionId.value = prediction.attributes.direction_id
 
@@ -90,7 +92,7 @@ const createPredictionBox = (prediction) => {
 
   arrivalTime.textContent = `Predicted Arrival Time: ${arrivalTime.value}`
   routeName.textContent = `Route: ${routeName.value}`
-  directionId.textContent = `Direction: ${directionId.value}`
+  directionId.textContent = `Direction: ${directionIdToDirectionName(directionId, routeName)}`
 
   predictionBox.append(arrivalTime)
   predictionBox.append(routeName)
@@ -99,50 +101,36 @@ const createPredictionBox = (prediction) => {
 
 
 
+//* Convert direction ID to direction name with purpose to be user-friendly
 
-
-
-
-// //TODO: Part 3 - Return only the first 2 sets of prediction times in which arrival time is NOT null
-
-
-
-// //TODO: Part 4 - Create nested conditional logic that would show direction in plain English
-
-// //*some pseudocoding here, because unsure what the route ID name is. Is it routeName.value?
-
-
-// if (route_id === 'Red' || route_id === 'Orange') {
-//   if (direction_id === 0) {
-//     //TODO: Display "Southbound"
-//   } else {
-//     //TODO: Display "Northbound"
-//   }
-// } else if (
-//   route_id === 'Blue' ||
-//   route_id === 'Green-B' ||
-//   route_id === 'Green-C' ||
-//   route_id === 'Green-D' ||
-//   route_id === 'Green-E') {
-//   if (direction_id === 0) {
-//     //TODO: Display "Westbound"
-//   } else {
-//     //TODO: Display "Eastbound"
-//   }
-// } else (route_id === 'Mattapan') {
-//   if (direction_id === 0) {
-//     //TODO: Display "Outbound"
-//   } else {
-//     //TODO: Display "Inbound"
-//   }
-// }
-
-
-
-
-
-
-
+const directionIdToDirectionName = (directionId, routeName) => {
+  if (routeName.value === 'Red' || routeName.value === 'Orange') {
+    if (directionId.value === 0) {
+      return 'Southbound'
+    } else {
+      return 'Northbound'
+    }
+  } else if (
+    routeName.value === 'Blue' ||
+    routeName.value === 'Green-B' ||
+    routeName.value === 'Green-C' ||
+    routeName.value === 'Green-D' ||
+    routeName.value === 'Green-E') {
+    if (directionId.value === 0) {
+      return 'Westbound'
+    } else {
+      return 'Eastbound'
+    }
+  } else if (routeName.value === 'Mattapan') {
+    if (directionId.value === 0) {
+      return 'Outbound'
+    } else {
+      return 'Inbound'
+    }
+  } else {
+    return 'Unknown'
+  }
+}
 
 
 
