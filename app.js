@@ -4,6 +4,7 @@
 //TODO this is a todo
 //? This is a question
 
+
 //*API URL to see list of Subway stops (their ID, parent station) 
 let stopsUrl = 'https://api-v3.mbta.com/stops?include=parent_station&filter[route_type]=1&api_key=1d4b621e1f544709887699295f22b466'
 
@@ -80,7 +81,7 @@ const createPredictionBox = (prediction) => {
   let directionId = document.createElement('p')
 
 
-  arrivalTime.value = prediction.attributes.arrival_time
+  arrivalTime.value = convertMilitaryToStandardTime(prediction.attributes.arrival_time)
   routeName.value = prediction.relationships.route.data.id
   directionId.value = prediction.attributes.direction_id
 
@@ -129,7 +130,7 @@ const directionIdToDirectionName = (directionId, routeName) => {
 }
 
 
-//
+//*This function removes prediction results when you search for a new prediction
 const removePredictionDisplays = () => {
   let div = document.querySelector('.prediction-results')
   while (div.lastChild) {
@@ -138,19 +139,14 @@ const removePredictionDisplays = () => {
 }
 
 
-
-//TODO: Convert the military time to 12-hour interval time, and ensure it's East Coast-based no matter where the browser/computer is located.
-//* Should just be a general function, though the input would be a reference from the API database 
-
-
-//? 1. Need to separate the date from the time
-//? 2. Need to remove the -05.00 from the end
-//? 3. Set function to convert times from military to standard, showing the AM and PM part  
+//*This function converts the military date/time format to standard time
+const convertMilitaryToStandardTime = (originalDateTime) => {
+  return moment(originalDateTime).format('MMMM Do YYYY, h:mm a')
+}
 
 
 
-
-//TODO: Write function - so that the dropdown menu also has a search capability
+//TODO EXTRA: Write function - so that the dropdown menu also has a search capability
 //*This will be a generic function
 
 
