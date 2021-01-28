@@ -51,13 +51,9 @@ const getParentStationFromDescr = (rawList, selectedDescription) => {
 const getPrediction = async (e) => {
   e.preventDefault()
   let description = document.querySelector('#select-station').value
-  // console.log(description)
   let station = getParentStationFromDescr(rawList, description)
-  // console.log(station)
-  let predictionURL = `https://api-v3.mbta.com/predictions?filter[route_type]=1&filter[stop]=${station}&sort=direction_id&api_key=1d4b621e1f544709887699295f22b466`
-
-
-
+  let predictionURL = `https://api-v3.mbta.com/predictions?filter[route_type]=1&filter[stop]=${station}&sort=direction_id&sort=time&api_key=1d4b621e1f544709887699295f22b466`
+  removePredictionDisplays()
   try {
     let response = await axios.get(predictionURL)
     response.data.data.forEach(prediction => {
@@ -133,11 +129,25 @@ const directionIdToDirectionName = (directionId, routeName) => {
 }
 
 
-//TODO: Create the remove results function
+//
+const removePredictionDisplays = () => {
+  let div = document.querySelector('.prediction-results')
+  while (div.lastChild) {
+    div.removeChild(div.lastChild)
+  }
+}
+
 
 
 //TODO: Convert the military time to 12-hour interval time, and ensure it's East Coast-based no matter where the browser/computer is located.
 //* Should just be a general function, though the input would be a reference from the API database 
+
+
+//? 1. Need to separate the date from the time
+//? 2. Need to remove the -05.00 from the end
+//? 3. Set function to convert times from military to standard, showing the AM and PM part  
+
+
 
 
 //TODO: Write function - so that the dropdown menu also has a search capability
@@ -145,14 +155,6 @@ const directionIdToDirectionName = (directionId, routeName) => {
 
 
 
-
-//* Input consist of the predicted time. Will need to compare that against the user's computer current timestamp and determine time difference. 
-//? Will I need to computer to determine the difference, or will they be able to auto-compute?
-
-
-
-//TODO FUTURE: Create if/else logic for the Prediction. If prediction is >5 minutes away from current time, display pop-up "You still got time! But make sure you get there." If prediction is >5 minutes from current time, display pop-up "Looks like you'll need to skedaddle!" Easter egg: If you're viewing the time for the last train of the day AND it's <10 minutes away, display pop-up "Last train of the day, or you'll need to take a Lyft!"
-//! Will need to make a note that the time is NOT automatically refreshed. 
 
 
 
