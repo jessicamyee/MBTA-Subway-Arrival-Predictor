@@ -54,7 +54,7 @@ const getPrediction = async (e) => {
   // console.log(description)
   let station = getParentStationFromDescr(rawList, description)
   // console.log(station)
-  let predictionURL = `https://api-v3.mbta.com/predictions?filter[route_type]=1&filter[stop]=${station}&api_key=1d4b621e1f544709887699295f22b466`
+  let predictionURL = `https://api-v3.mbta.com/predictions?filter[route_type]=1&filter[stop]=${station}&sort=direction_id&api_key=1d4b621e1f544709887699295f22b466`
 
 
 
@@ -133,11 +133,15 @@ const directionIdToDirectionName = (directionId, routeName) => {
 }
 
 
-
+//TODO: Create the remove results function
 
 
 //TODO: Convert the military time to 12-hour interval time, and ensure it's East Coast-based no matter where the browser/computer is located.
 //* Should just be a general function, though the input would be a reference from the API database 
+
+
+//TODO: Write function - so that the dropdown menu also has a search capability
+//*This will be a generic function
 
 
 
@@ -157,5 +161,3 @@ const directionIdToDirectionName = (directionId, routeName) => {
 
 
 
-//TODO: Write function - so that the dropdown menu also has a search capability
-//*This will be a generic function
