@@ -6,7 +6,7 @@
 
 
 //*API URL to see list of Subway stops (their ID, parent station) 
-let stopsUrl = 'https://api-v3.mbta.com/stops?include=parent_station&filter[route_type]=1&api_key=1d4b621e1f544709887699295f22b466'
+let stopsUrl = 'https://api-v3.mbta.com/stops?include=parent_station&filter[route_type]=0,1&api_key=1d4b621e1f544709887699295f22b466'
 
 
 let rawList = null;
@@ -52,7 +52,7 @@ const getPrediction = async (e) => {
   e.preventDefault()
   let description = document.querySelector('#select-station').value
   let station = getParentStationFromDescr(rawList, description)
-  let predictionURL = `https://api-v3.mbta.com/predictions?filter[route_type]=1&filter[stop]=${station}&sort=direction_id&sort=time&api_key=1d4b621e1f544709887699295f22b466`
+  let predictionURL = `https://api-v3.mbta.com/predictions?filter[route_type]=0,1&filter[stop]=${station}&sort=direction_id&sort=time&api_key=1d4b621e1f544709887699295f22b466`
   removePredictionDisplays()
   try {
     let response = await axios.get(predictionURL)
