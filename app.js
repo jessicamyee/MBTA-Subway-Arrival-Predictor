@@ -16,9 +16,9 @@ let rawList = null;
 const getSubwayStops = async () => {
   try {
     let response = await axios.get(stopsUrl)
-    // console.log(response)
     rawList = response.data.data
-    populateDropdown(rawList);
+    let alphaSortedStopsList = rawList.sort((a, b) => (a.attributes.description > b.attributes.description) ? 1 : -1);
+    populateDropdown(alphaSortedStopsList);
   } catch (error) {
     console.log(error)
   }
@@ -27,15 +27,21 @@ getSubwayStops()
 
 
 //* Sub-function: to retrieve the list of stations in the dropdown menu
-const populateDropdown = (rawList) => {
+const populateDropdown = (alphaSortedStopsList) => {
   let select = document.querySelector('#select-station')
-  rawList.forEach(stop => {
+  alphaSortedStopsList.forEach(stop => {
     let option = document.createElement('option')
     option.value = stop.attributes.description
     option.textContent = stop.attributes.description
     select.append(option)
   });
 }
+
+
+
+
+
+
 
 //* Sub-function: Given the raw list of stops and selected description (aka the station the user selects) and returns the corresponding parent station
 const getParentStationFromDescr = (rawList, selectedDescription) => {
@@ -93,11 +99,13 @@ const createPredictionBox = (prediction) => {
   let routeName = document.createElement('p')
   let directionId = document.createElement('p')
 
+  arrivalTime.className = 'classArrivalTime'
+  routeName.className = 'classRouteName'
+  directionId.className = 'classDirectionId'
 
   arrivalTime.value = convertMilitaryToStandardTime(prediction.attributes.arrival_time)
   routeName.value = prediction.relationships.route.data.id
   directionId.value = prediction.attributes.direction_id
-
 
 
   arrivalTime.textContent = `Arrival Time: ${arrivalTime.value}`
@@ -116,6 +124,25 @@ const createPredictionBox = (prediction) => {
 const sortPredictionFunction = (predictionA, predictionB) => {
   return predictionA.relationships.route.data.id.localeCompare(predictionB.relationships.route.data.id) || predictionA.attributes.direction_id - predictionB.attributes.direction_id || moment(predictionA.attributes.arrival_time) - moment(predictionB.attributes.arrival_time)
 }
+
+
+//TODO Sub-function for pt 2: Conditionally change the color of Route names in the Prediction box
+// const changeRouteColor = () => {
+//   if (routeName.value == 'Green') {
+//     document.querySelector('.classRouteName').style.color = '#008000'
+//   } else if (routeName.value == 'Red') {
+//     document.querySelector('.classRouteName').style.color = '#FF0000'
+//   } else if (routeName.value == 'Orange') {
+//     document.querySelector('.classRouteName').style.color = '#FFA500'
+//   } else if (routeName.value == 'Blue') {
+//     document.querySelector('.classRouteName').style.color = '#0000FF'
+//   } else if (routeName.value === 'Mattapan') {
+//     document.querySelector('.classRouteName').style.color = '#660000'
+//   } else {
+//     document.querySelector('.classRouteName').style.color = '#00000'
+//   }
+// }
+
 
 
 
