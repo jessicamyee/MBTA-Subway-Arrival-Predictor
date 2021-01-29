@@ -52,11 +52,14 @@ const getPrediction = async (e) => {
   e.preventDefault()
   let description = document.querySelector('#select-station').value
   let station = getParentStationFromDescr(rawList, description)
-  let predictionURL = `https://api-v3.mbta.com/predictions?filter[route_type]=0,1&filter[stop]=${station}&sort=direction_id&sort=time&api_key=1d4b621e1f544709887699295f22b466`
+  let predictionURL = `https://api-v3.mbta.com/predictions?filter[route_type]=0,1&filter[stop]=${station}&sort=time&api_key=1d4b621e1f544709887699295f22b466`
   removePredictionDisplays()
   try {
     let response = await axios.get(predictionURL)
-    response.data.data.forEach(prediction => {
+    rawPredictionList = response.data.data;
+    let sortedList = rawPredictionList.sort(sortPredictionFunction);
+
+    sortedList.forEach(prediction => {
       createPredictionBox(prediction)
     })
   } catch (error) {
@@ -67,6 +70,12 @@ const getPrediction = async (e) => {
 //* Add event listener to the submit button
 const form = document.querySelector('form')
 form.addEventListener('submit', getPrediction)
+
+
+
+
+
+
 
 
 //* Function to create the box of prediction results
@@ -94,6 +103,19 @@ const createPredictionBox = (prediction) => {
   predictionBox.append(routeName)
   predictionBox.append(directionId)
 }
+
+
+const sortPredictionFunction = (predictionA, predictionB) => {
+  return predictionA.relationships.route.data.id.localeCompare(predictionB.relationships.route.data.id) || predictionA.attributes.direction_id - predictionB.attributes.direction_id || moment(predictionA.attributes.arrival_time) - moment(predictionB.attributes.arrival_time)
+}
+
+
+
+
+
+
+
+
 
 
 
@@ -142,6 +164,10 @@ const removePredictionDisplays = () => {
 const convertMilitaryToStandardTime = (originalDateTime) => {
   return moment(originalDateTime).format('MMMM Do YYYY, h:mm a')
 }
+
+
+
+
 
 
 
