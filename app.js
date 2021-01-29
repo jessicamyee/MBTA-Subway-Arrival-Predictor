@@ -193,7 +193,21 @@ const convertMilitaryToStandardTime = (originalDateTime) => {
 }
 
 
+//*Add event listeners to the resource buttons
 
+const navigateToSubwaySchedule = () => {
+  location.href = 'https://www.mbta.com/schedules/subway';
+};
+const navigateToBusSchedule = () => {
+  location.href = 'https://www.mbta.com/schedules/bus';
+};
+const navigateToStationInfo = () => {
+  location.href = 'https://www.mbta.com/stops/subway';
+};
+
+document.querySelector('#subway-schedule').addEventListener('click', navigateToSubwaySchedule);
+document.querySelector('#bus-schedule').addEventListener('click', navigateToBusSchedule);
+document.querySelector('#station-info').addEventListener('click', navigateToStationInfo);
 
 
 
