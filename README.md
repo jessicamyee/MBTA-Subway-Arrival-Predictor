@@ -66,7 +66,7 @@ API used: [Massachusetts Bay Transportation Authority (MBTA)](https://api-v3.mbt
 |Jan 25-26| Prompt / Wireframes / Priority Matrix / Timeframes | Complete
 |Jan 26| Project Approval and Core Application Structure Set Up (HTML, CSS, etc.) | Complete
 |Jan 27| HTML 100% done, JavaScript 50% done | Complete
-|Jan 28| JavaScript 100% done, CSS 50% done | Incomplete
+|Jan 28| JavaScript 100% done, CSS 50% done | Complete
 |Jan 29| CSS 100% done, MVP | Incomplete
 |Feb 1| Presentations/Project Submission | Incomplete
 
@@ -86,15 +86,15 @@ API used: [Massachusetts Bay Transportation Authority (MBTA)](https://api-v3.mbt
 | Integrate API for the Predictor feature and ensure data can be retrieved via console first | H | 3hrs| 2hrs | 2hrs |
 | QA and debugging for API integration | H | 2hrs| 1hr | 1hr |
 | Connect API integration with event listener to ensure text does populate on the webpage itself (Part 1) | H | 3hrs| 2.5hrs | 2.5hrs |
-| Connect API integration with event listener to ensure text does populate on the webpage itself (Part 2) | H | 3hrs|  |  |
+| Connect API integration with event listener to ensure text does populate on the webpage itself (Part 2) | H | 3hrs| 3hrs | 3hrs |
 | Convert time layout from MBTA's military time to 12-hour view | H | 1hr| 1hr | 1hr |
 | QA and debugging for API connection | H | 3hrs| 0.25hr | 0.25hr |
 | Enable capability to remove search results upon new entry | M | 1hr| 0.17hr | 0.17hr |
 | QA and debugging for removal of search entry | H | 1hr| 0hr | 0hr |
 | Write out the last section of webapp - resources  | M | 1hr|  |  |
 | Add MBTA's twitter feed | M | 2hrs|  |  |
-| Text decoration: font style, font size, font colors | L | 2hrs|  |  |
-| Using Flexbox: Elements (image, boxes) resizing and alignment | H | 3hrs|  |  |
+| Text decoration: font style, font size, font colors | L | 2hrs| 0.5hr | 0.5hr |
+| Using Flexbox: Elements (image, boxes) resizing and alignment | H | 3hrs| 1hr | 1hr |
 | Non-text element decoration (submit box, etc) | L | 2hrs|  |  |
 | Implementing responsive design to webapp | H | 3hrs|  |  |
 | Final webapp QA | H | 2hrs|  |  |

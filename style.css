@@ -68,3 +68,8 @@ img {
   flex: 2;
 }
 
+.twitter-feed{
+  margin: 50px;
+  display: flex;
+  justify-content: center;
+}
