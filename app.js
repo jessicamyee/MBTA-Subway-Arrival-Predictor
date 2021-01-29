@@ -9,6 +9,8 @@
 let stopsUrl = 'https://api-v3.mbta.com/stops?include=parent_station&filter[route_type]=0,1&api_key=1d4b621e1f544709887699295f22b466'
 
 
+//*Main Function 1 to trigger dropdown menu of stations
+
 let rawList = null;
 
 const getSubwayStops = async () => {
@@ -24,7 +26,7 @@ const getSubwayStops = async () => {
 getSubwayStops()
 
 
-//* This is the function to retrieve the list of stations in the dropdown menu
+//* Sub-function: to retrieve the list of stations in the dropdown menu
 const populateDropdown = (rawList) => {
   let select = document.querySelector('#select-station')
   rawList.forEach(stop => {
@@ -35,7 +37,7 @@ const populateDropdown = (rawList) => {
   });
 }
 
-//* Given the raw list of stops and selected description (aka the station the user selects) and returns the corresponding parent station
+//* Sub-function: Given the raw list of stops and selected description (aka the station the user selects) and returns the corresponding parent station
 const getParentStationFromDescr = (rawList, selectedDescription) => {
   let targetStop = null;
   rawList.forEach(stop => {
@@ -47,7 +49,7 @@ const getParentStationFromDescr = (rawList, selectedDescription) => {
 }
 
 
-//* This will trigger the command to retrieve predictions
+//* Main function Pt 2: This will trigger the command to retrieve predictions
 const getPrediction = async (e) => {
   e.preventDefault()
   let description = document.querySelector('#select-station').value
@@ -81,8 +83,7 @@ form.addEventListener('submit', getPrediction)
 
 
 
-
-//* Function to create the box of prediction results
+//* Sub-function for pt 2: to create the box of prediction results
 let predictionSection = document.querySelector('.prediction-results')
 
 const createPredictionBox = (prediction) => {
@@ -109,29 +110,23 @@ const createPredictionBox = (prediction) => {
 }
 
 
-//* Sorting function for sorting the prediction boxes. Priority to sort (route, then direction, then arrival time)
+
+
+//* Sub-function for pt 2: Sorting function for sorting the prediction boxes. Priority to sort (route, then direction, then arrival time)
 const sortPredictionFunction = (predictionA, predictionB) => {
   return predictionA.relationships.route.data.id.localeCompare(predictionB.relationships.route.data.id) || predictionA.attributes.direction_id - predictionB.attributes.direction_id || moment(predictionA.attributes.arrival_time) - moment(predictionB.attributes.arrival_time)
 }
 
 
 
-
-
-
-
-
-
-
-
-//* Convert direction ID to direction name with purpose to be user-friendly
+//* Sub-function for pt 2: Convert direction ID to direction name with purpose to be user-friendly
 
 const directionIdToDirectionName = (directionId, routeName) => {
   if (routeName.value === 'Red' || routeName.value === 'Orange') {
     if (directionId.value === 0) {
       return 'Southbound'
     } else {
-      return 'Northbound'
+      return 'NORTHbound'
     }
   } else if (
     routeName.value === 'Blue' ||
@@ -142,13 +137,13 @@ const directionIdToDirectionName = (directionId, routeName) => {
     if (directionId.value === 0) {
       return 'Westbound'
     } else {
-      return 'Eastbound'
+      return 'EASTbound'
     }
   } else if (routeName.value === 'Mattapan') {
     if (directionId.value === 0) {
       return 'Outbound'
     } else {
-      return 'Inbound'
+      return 'INbound'
     }
   } else {
     return 'Unknown'
@@ -165,7 +160,7 @@ const removePredictionDisplays = () => {
 }
 
 
-//*This function converts the military date/time format to standard time
+//*Sub-function for pt 2: This function converts the military date/time format to standard time
 const convertMilitaryToStandardTime = (originalDateTime) => {
   return moment(originalDateTime).format('MMMM Do YYYY, h:mm a')
 }
