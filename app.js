@@ -58,8 +58,13 @@ const getPrediction = async (e) => {
     let response = await axios.get(predictionURL)
     rawPredictionList = response.data.data;
     let sortedList = rawPredictionList.sort(sortPredictionFunction);
+    let sortedValidList = sortedList.filter(prediction => {
+      let hasArrivalTime = prediction.attributes.arrival_time !== null;
+      let isAfterNow = moment(prediction.attributes.arrival_time).isAfter(moment());
+      return hasArrivalTime && isAfterNow;
+    });
 
-    sortedList.forEach(prediction => {
+    sortedValidList.forEach(prediction => {
       createPredictionBox(prediction)
     })
   } catch (error) {
@@ -70,9 +75,6 @@ const getPrediction = async (e) => {
 //* Add event listener to the submit button
 const form = document.querySelector('form')
 form.addEventListener('submit', getPrediction)
-
-
-
 
 
 
@@ -105,6 +107,7 @@ const createPredictionBox = (prediction) => {
 }
 
 
+//* Sorting function for sorting the prediction boxes. Priority to sort (route, then direction, then arrival time)
 const sortPredictionFunction = (predictionA, predictionB) => {
   return predictionA.relationships.route.data.id.localeCompare(predictionB.relationships.route.data.id) || predictionA.attributes.direction_id - predictionB.attributes.direction_id || moment(predictionA.attributes.arrival_time) - moment(predictionB.attributes.arrival_time)
 }
