@@ -196,13 +196,13 @@ const convertMilitaryToStandardTime = (originalDateTime) => {
 //*Add event listeners to the resource buttons
 
 const navigateToSubwaySchedule = () => {
-  location.href = 'https://www.mbta.com/schedules/subway';
+  window.open('https://www.mbta.com/schedules/subway', '_blank')
 };
 const navigateToBusSchedule = () => {
-  location.href = 'https://www.mbta.com/schedules/bus';
+  window.open('https://www.mbta.com/schedules/bus', '_blank')
 };
 const navigateToStationInfo = () => {
-  location.href = 'https://www.mbta.com/stops/subway';
+  window.open('https://www.mbta.com/stops/subway', '_blank')
 };
 
 document.querySelector('#subway-schedule').addEventListener('click', navigateToSubwaySchedule);

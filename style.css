@@ -6,7 +6,7 @@
 
 .top-banner {
   background-image: url("./images/updated-green-line.png");
-  height: 400px;
+  height: 300px;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -26,7 +26,7 @@
 
 .mid-section{
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 
@@ -55,17 +55,20 @@ button{
 .prediction-results div{
   margin: 30px;
   padding: 0px;
+  border: violet;
+  border-width: 1px;
+  border-style: solid;
 }
 
 img {
   margin: 10px 0px;
-  max-width: 80%;
+  max-width: 75%;
   height: auto;
   display: block;
   margin-left: auto;
   margin-right: auto;
   border-radius: 8px;
-  flex: 2;
+  flex: 1;
 }
 
 .twitter-feed{
