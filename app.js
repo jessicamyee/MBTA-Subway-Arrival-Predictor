@@ -38,7 +38,6 @@ const populateDropdown = (rawList) => {
 //* Given the raw list of stops and selected description (aka the station the user selects) and returns the corresponding parent station
 const getParentStationFromDescr = (rawList, selectedDescription) => {
   let targetStop = null;
-  //TODO: Find the stop in Rawlist where "stop.attributes.description" === dropdown value
   rawList.forEach(stop => {
     if (selectedDescription === stop.attributes.description) {
       targetStop = stop;
@@ -48,7 +47,7 @@ const getParentStationFromDescr = (rawList, selectedDescription) => {
 }
 
 
-
+//* This will trigger the command to retrieve predictions
 const getPrediction = async (e) => {
   e.preventDefault()
   let description = document.querySelector('#select-station').value
@@ -65,13 +64,13 @@ const getPrediction = async (e) => {
   }
 }
 
+//* Add event listener to the submit button
 const form = document.querySelector('form')
 form.addEventListener('submit', getPrediction)
 
 
-
+//* Function to create the box of prediction results
 let predictionSection = document.querySelector('.prediction-results')
-
 
 const createPredictionBox = (prediction) => {
   let predictionBox = document.createElement('div')
@@ -87,7 +86,7 @@ const createPredictionBox = (prediction) => {
 
 
 
-  arrivalTime.textContent = `Predicted Arrival Time: ${arrivalTime.value}`
+  arrivalTime.textContent = `Arrival Time: ${arrivalTime.value}`
   routeName.textContent = `Route: ${routeName.value}`
   directionId.textContent = `Direction: ${directionIdToDirectionName(directionId, routeName)}`
 

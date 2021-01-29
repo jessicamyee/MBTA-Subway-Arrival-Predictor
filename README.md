@@ -87,10 +87,10 @@ API used: [Massachusetts Bay Transportation Authority (MBTA)](https://api-v3.mbt
 | QA and debugging for API integration | H | 2hrs| 1hr | 1hr |
 | Connect API integration with event listener to ensure text does populate on the webpage itself (Part 1) | H | 3hrs| 2.5hrs | 2.5hrs |
 | Connect API integration with event listener to ensure text does populate on the webpage itself (Part 2) | H | 3hrs|  |  |
-| Convert time layout from MBTA's military time to 12-hour view | H | 1hr|  |  |
-| QA and debugging for API connection | H | 3hrs|  |  |
-| Enable capability to remove search results upon new entry | M | 1hr|  |  |
-| QA and debugging for removal of search entry | H | 1hr|  |  |
+| Convert time layout from MBTA's military time to 12-hour view | H | 1hr| 1hr | 1hr |
+| QA and debugging for API connection | H | 3hrs| 0.25hr | 0.25hr |
+| Enable capability to remove search results upon new entry | M | 1hr| 0.17hr | 0.17hr |
+| QA and debugging for removal of search entry | H | 1hr| 0hr | 0hr |
 | Write out the last section of webapp - resources  | M | 1hr|  |  |
 | Add MBTA's twitter feed | M | 2hrs|  |  |
 | Text decoration: font style, font size, font colors | L | 2hrs|  |  |

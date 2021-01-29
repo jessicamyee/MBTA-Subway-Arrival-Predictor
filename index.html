@@ -12,27 +12,36 @@
 </head>
 
 <body>
-  <header>
-    <!-- Insert Title of page here with maybe a background banner? -->
+  <header class="top-banner">
+    <h1 id="webapp-title">MBTA Subway Arrival Predictor</h1>
   </header>
 
-  <figure>
-    <img src="./images/mbta-subway-map.jpg" alt="MBTA subway map">
-    <figcaption>Fig1. - Map of Boston subway routes </figcaption>
-    <!-- Image source: (https://cambooth.net/boston-mbta-map-redesign/) -->
-  </figure>
+  <section class="mid-section">
+    <article class="prediction-area">
+      <form>
+        <select name='station' id='select-station'>
+          <option>Choose a station!</option>
+        </select>
+        <button>Submit!</button>
+      </form>
 
-  <form>
-    <select name='station' id='select-station'>
-      <option>Choose a station!</option>
-    </select>
-    <button>Submit!</button>
-  </form>
+      <section class="prediction-results">
+        <!-- This is where the prediction results will populate via DOM -->
+      </section>
 
-
-  <section class="prediction-results">
-    <!-- This is where the prediction results will populate via DOM -->
+    </article>
+    <figure>
+      <img src="./images/updated-subway-map.png" alt="MBTA subway map">
+      <!-- Image source: (https://upload.wikimedia.org/wikipedia/commons/d/db/2013_unofficial_MBTA_subway_map_by_Michael_Kvrivishvili.png) -->
+    </figure>
   </section>
+
+
+
+
+
+
+
 
 
   <section class="resource-list">

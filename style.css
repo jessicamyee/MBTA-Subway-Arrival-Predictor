@@ -1,0 +1,68 @@
+*{
+  margin: auto;
+  max-width: 95%;
+}
+
+.top-banner {
+  background-image: url("./images/green-line.png");
+  height: 400px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 0.45;
+  position: relative;
+}
+
+#webapp-title {
+  text-align: center;
+  font-size: 30px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #000000;
+}
+
+
+.mid-section{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+}
+
+/* border style is for debugging */
+.prediction-area{  
+  border-color: rebeccapurple;
+  border-width: 1px;
+  border-style: solid;
+  margin: 30px 0px;
+  padding: 30px;
+}
+
+#select-station{
+  margin: 30px;
+}
+
+button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.prediction-results div{
+  margin: 30px;
+  padding: 0px;
+}
+
+img {
+  margin: 10px 0px;
+  max-width: 80%;
+  height: auto;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 8px;
+}
+
