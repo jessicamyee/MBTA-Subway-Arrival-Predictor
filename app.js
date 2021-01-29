@@ -57,14 +57,16 @@ const getPrediction = async (e) => {
   try {
     let response = await axios.get(predictionURL)
     rawPredictionList = response.data.data;
-    let sortedList = rawPredictionList.sort(sortPredictionFunction);
-    let sortedValidList = sortedList.filter(prediction => {
+
+    let filteredList = rawPredictionList.filter(prediction => {
       let hasArrivalTime = prediction.attributes.arrival_time !== null;
       let isAfterNow = moment(prediction.attributes.arrival_time).isAfter(moment());
       return hasArrivalTime && isAfterNow;
     });
 
-    sortedValidList.forEach(prediction => {
+    let sortedFilteredList = filteredList.sort(sortPredictionFunction);
+
+    sortedFilteredList.forEach(prediction => {
       createPredictionBox(prediction)
     })
   } catch (error) {
