@@ -87,11 +87,40 @@ img {
 }
 
 .resource-list{
-  margin: 30px 0px;
+  padding: 35px;
+  background-color: #15551e ;
 }
 
+h2{
+  color:white;
+  margin: 0px 0px 50px;
+}
+
+.resource-button-set{
+  display: flex;
+  flex-direction: row;
+}
+
+.resource-button-single{
+  background-color:#000000;
+  color:#FFFFFF;
+  border: none;
+  width: 200px;
+  height: 60px;
+  border-radius: 6px;
+  padding: 20px;
+  font-size: 15px;
+  transition-duration: 0.3s;
+}
+
+.resource-button-single:hover{
+  background-color: #F5F5DC;
+  color: #000000;
+}
+
+
 footer {
-  background-color: #033009;
+  background-color: #020D02;
   padding: 12px 40px;
   text-align: center;
 }
