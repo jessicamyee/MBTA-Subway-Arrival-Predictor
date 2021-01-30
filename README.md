@@ -67,7 +67,7 @@ API used: [Massachusetts Bay Transportation Authority (MBTA)](https://api-v3.mbt
 |Jan 26| Project Approval and Core Application Structure Set Up (HTML, CSS, etc.) | Complete
 |Jan 27| HTML 100% done, JavaScript 50% done | Complete
 |Jan 28| JavaScript 100% done, CSS 50% done | Complete
-|Jan 29| CSS 100% done, MVP | Incomplete
+|Jan 29| CSS 100% done, MVP | Complete
 |Feb 1| Presentations/Project Submission | Incomplete
 
 ## Priority Matrix
@@ -93,9 +93,9 @@ API used: [Massachusetts Bay Transportation Authority (MBTA)](https://api-v3.mbt
 | QA and debugging for removal of search entry | H | 1hr| 0hr | 0hr |
 | Write out the last section of webapp - resources  | M | 1hr| 0.5hr | 0.5hr |
 | Add MBTA's twitter feed | M | 2hrs| 0.5hr | 0.5hr |
-| Text decoration: font style, font size, font colors | L | 2hrs| 0.5hr | 0.5hr |
+| Text decoration: font style, font size, font colors | L | 2hrs| 2.5hrs | 2.5hrs |
 | Using Flexbox: Elements (image, boxes) resizing and alignment | H | 3hrs| 2.5hrs | 2.5hrs |
-| Non-text element decoration (submit box, etc) | L | 2hrs| 2hrs | 2hrs |
+| Non-text element decoration (submit box, etc) | L | 2hrs| 2.5hrs | 2.5hrs |
 | Implementing responsive design to webapp | H | 3hrs|  |  |
 | Final webapp QA | H | 2hrs|  |  |
 | Total | H | 41.5hrs|  |  |
