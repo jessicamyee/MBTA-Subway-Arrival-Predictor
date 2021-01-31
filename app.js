@@ -5,6 +5,11 @@
 //? This is a question
 
 
+//TODO: https://www.w3schools.com/howto/howto_js_cascading_dropdown.asp
+
+
+
+
 //*API URL to see list of Subway stops (their ID, parent station) 
 let stopsUrl = 'https://api-v3.mbta.com/stops?include=parent_station&filter[route_type]=0,1&api_key=1d4b621e1f544709887699295f22b466'
 
@@ -124,24 +129,6 @@ const createPredictionBox = (prediction) => {
 const sortPredictionFunction = (predictionA, predictionB) => {
   return predictionA.relationships.route.data.id.localeCompare(predictionB.relationships.route.data.id) || predictionA.attributes.direction_id - predictionB.attributes.direction_id || moment(predictionA.attributes.arrival_time) - moment(predictionB.attributes.arrival_time)
 }
-
-
-//TODO Sub-function for pt 2: Conditionally change the color of Route names in the Prediction box
-// const changeRouteColor = () => {
-//   if (routeName.value == 'Green') {
-//     document.querySelector('.classRouteName').style.color = '#008000'
-//   } else if (routeName.value == 'Red') {
-//     document.querySelector('.classRouteName').style.color = '#FF0000'
-//   } else if (routeName.value == 'Orange') {
-//     document.querySelector('.classRouteName').style.color = '#FFA500'
-//   } else if (routeName.value == 'Blue') {
-//     document.querySelector('.classRouteName').style.color = '#0000FF'
-//   } else if (routeName.value === 'Mattapan') {
-//     document.querySelector('.classRouteName').style.color = '#660000'
-//   } else {
-//     document.querySelector('.classRouteName').style.color = '#00000'
-//   }
-// }
 
 
 

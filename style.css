@@ -55,12 +55,6 @@ body{
   font-size: 18px;
 }
 
-/* button{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-} */
-
 #submit-button{
   display: flex;
   justify-content: center;
@@ -115,7 +109,7 @@ h2{
 
 .resource-button-set{
   display: flex;
-  flex-direction: row;
+  flex-flow: row wrap;
 }
 
 .resource-button-single{
@@ -131,6 +125,7 @@ h2{
   transition-duration: 0.3s;
   justify-content: center;
   align-items: center;
+  margin-top: 20px;
 }
 
 .resource-button-single:hover{
@@ -170,3 +165,101 @@ footer {
   margin: 10px 20px;
   border-radius: 10px;
 } 
+
+
+
+
+@media screen and (max-width: 565px){
+
+  #webapp-title {
+    font-size: 30px;
+    top: 30%;
+  }
+
+
+  .mid-section{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+  }
+
+  .prediction-area{  
+    max-width: 96%;
+  }
+
+  #select-station{
+    max-width: 90%;
+    font-size: 15px;
+  }
+
+  img {
+    max-width: 96%;
+  }
+
+  h2{
+    margin: 0px 0px 20px;
+    font-size: 20px;
+  }
+
+  .resource-button-single{
+    display: flex;
+    width: 100px;
+    height: 60px;
+    font-size: 13px;
+    justify-content: space-between;
+  }
+
+  footer {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .fa {
+    padding: 10px;
+  }
+}
+
+
+
+
+@media screen and (max-width: 320px){
+
+  .top-banner {
+    min-width: 100%;
+  }
+
+  #webapp-title {
+    font-size: 25px;
+  }
+
+  .prediction-area{  
+    max-width: 90%;
+  }
+
+  #select-station{
+    max-width: 80%;
+  }
+
+  img {
+    max-width: 90%;
+  }
+
+  h2{
+    margin: 0px 0px 10px;
+    font-size: 15px;
+  }
+
+  .resource-button-single{
+    display: flex;
+    width: 100px;
+    height: 60px;
+    font-size: 13px;
+    justify-content: space-between;
+  }
+
+  .fa {
+    padding: 10px;
+  }
+}
