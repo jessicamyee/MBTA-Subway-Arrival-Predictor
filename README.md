@@ -96,7 +96,7 @@ API used: [Massachusetts Bay Transportation Authority (MBTA)](https://api-v3.mbt
 | Text decoration: font style, font size, font colors | L | 2hrs| 2.5hrs | 2.5hrs |
 | Using Flexbox: Elements (image, boxes) resizing and alignment | H | 3hrs| 2.5hrs | 2.5hrs |
 | Non-text element decoration (submit box, etc) | L | 2hrs| 2.5hrs | 2.5hrs |
-| Implementing responsive design to webapp | H | 3hrs|  |  |
+| Implementing responsive design to webapp | H | 3hrs| 2hrs | 2hrs |
 | Final webapp QA | H | 2hrs|  |  |
 | Total | H | 41.5hrs|  |  |
 
