@@ -120,7 +120,7 @@ API used: [Massachusetts Bay Transportation Authority (MBTA)](https://api-v3.mbt
 | Non-text element decoration (submit box, etc) | L | 2hrs| 4hrs | 4hrs |
 | Implementing responsive design to webapp | H | 3hrs| 3hrs | 3hrs |
 | Final webapp QA | H | 2hrs| 1hr | 1hr |
-| Total | H | 41.5hrs| 29.25hrs | 29.25hrs |
+| Total | H | 41.5hrs| 32.75hrs | 32.75hrs |
 
 ## Code Snippet
 
