@@ -122,7 +122,9 @@ const createPredictionBox = (prediction) => {
 
 //* Sub-function for MF2: Sorting function for sorting the prediction boxes. Priority to sort (route, then direction, then arrival time)
 const sortPredictionFunction = (predictionA, predictionB) => {
-  return predictionA.relationships.route.data.id.localeCompare(predictionB.relationships.route.data.id) || predictionA.attributes.direction_id - predictionB.attributes.direction_id || moment(predictionA.attributes.arrival_time) - moment(predictionB.attributes.arrival_time)
+  return predictionA.relationships.route.data.id.localeCompare(predictionB.relationships.route.data.id) ||
+    predictionA.attributes.direction_id - predictionB.attributes.direction_id ||
+    moment(predictionA.attributes.arrival_time) - moment(predictionB.attributes.arrival_time)
 }
 
 

@@ -39,6 +39,10 @@ body{
 
 }
 
+p{
+  text-align: center; 
+}
+
 .prediction-area{  
   background-color: #FFFFFF;
   border-width: 1px;
