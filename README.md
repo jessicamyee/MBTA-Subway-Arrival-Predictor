@@ -16,28 +16,50 @@ API used: [Massachusetts Bay Transportation Authority (MBTA)](https://api-v3.mbt
 
 ```JSON
 {
-    "data": {
-        "attributes": {
-            "color": "ED8B00",
-            "description": "Rapid Transit",
-            "direction_destinations": [
-                "Forest Hills",
-                "Oak Grove"
-            ],
-            "direction_names": [
-                "South",
-                "North"
-            ],
-            "fare_class": "Rapid Transit",
-            "long_name": "Orange Line",
-            "short_name": "",
-            "sort_order": 10020,
-            "text_color": "FFFFFF",
-            "type": 1
+    "data": [
+        {
+            "attributes": {
+                "address": null,
+                "at_street": null,
+                "description": "Cleveland Circle - Green Line - Park Street & North",
+                "latitude": 42.336252,
+                "location_type": 0,
+                "longitude": -71.148774,
+                "municipality": "Boston",
+                "name": "Cleveland Circle",
+                "on_street": null,
+                "platform_code": null,
+                "platform_name": "Park Street & North",
+                "vehicle_type": 0,
+                "wheelchair_boarding": 1
+            },
+            "id": "70238",
+            "links": {
+                "self": "/stops/70238"
+            },
+            "relationships": {
+                "child_stops": {},
+                "facilities": {
+                    "links": {
+                        "related": "/facilities/?filter[stop]=70238"
+                    }
+                },
+                "parent_station": {
+                    "data": {
+                        "id": "place-clmnl",
+                        "type": "stop"
+                    }
+                },
+                "recommended_transfers": {},
+                "zone": {
+                    "data": {
+                        "id": "RapidTransit",
+                        "type": "zone"
+                    }
+                }
+            },
+            "type": "stop"
         },
-        "id": "Orange",
-        "links": {
-            "self": "/routes/Orange"
 
 ```
 
@@ -48,7 +70,7 @@ API used: [Massachusetts Bay Transportation Authority (MBTA)](https://api-v3.mbt
 ### MVP/PostMVP
 
 #### MVP 
-- Integration with MBTA's API to access their database of subway routes, schedules, and predicted arrival/departures
+- Integration with MBTA's API to access their database of predicted subway arrivals
 - Ability to input a Boston-area subway station name and the output would be the prediction in which the subway will arrive at that station
 - Provide a static map of the subway routes.
 
@@ -95,8 +117,8 @@ API used: [Massachusetts Bay Transportation Authority (MBTA)](https://api-v3.mbt
 | Add MBTA's twitter feed | M | 2hrs| 0.5hr | 0.5hr |
 | Text decoration: font style, font size, font colors | L | 2hrs| 2.5hrs | 2.5hrs |
 | Using Flexbox: Elements (image, boxes) resizing and alignment | H | 3hrs| 2.5hrs | 2.5hrs |
-| Non-text element decoration (submit box, etc) | L | 2hrs| 2.5hrs | 2.5hrs |
-| Implementing responsive design to webapp | H | 3hrs| 2hrs | 2hrs |
+| Non-text element decoration (submit box, etc) | L | 2hrs| 4hrs | 4hrs |
+| Implementing responsive design to webapp | H | 3hrs| 3hrs | 3hrs |
 | Final webapp QA | H | 2hrs|  |  |
 | Total | H | 41.5hrs|  |  |
 
