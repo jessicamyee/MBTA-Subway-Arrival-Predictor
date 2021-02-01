@@ -133,4 +133,5 @@ function reverse(string) {
 ```
 
 ## Change Log
-N/A
+- Visual design of webapp changed slightly (compared to the initial wireframe) due to a better cohesive visual experience.
+
