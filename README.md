@@ -2,7 +2,8 @@
 
 ## MBTA Subway Arrival Predictor
 
-Link to deployed web application: PENDING
+[Link to Live Deployed Link](https://jessicamyee.github.io/MBTA-Subway-Arrival-Predictor/)
+
 
 ## Project Description
 
@@ -90,7 +91,7 @@ API used: [Massachusetts Bay Transportation Authority (MBTA)](https://api-v3.mbt
 |Jan 27| HTML 100% done, JavaScript 50% done | Complete
 |Jan 28| JavaScript 100% done, CSS 50% done | Complete
 |Jan 29| CSS 100% done, MVP | Complete
-|Feb 1| Presentations/Project Submission | Incomplete
+|Feb 1| Presentations/Project Submission | Complete
 
 ## Priority Matrix
 ![Priority Matrix](https://github.com/jessicamyee/MBTA-Subway-Arrival-Predictor/blob/main/Updated%20-%20Priority%20Matrix.png)
