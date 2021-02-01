@@ -55,6 +55,7 @@ body{
   font-size: 18px;
 }
 
+
 #submit-button{
   display: flex;
   justify-content: center;
@@ -69,6 +70,24 @@ body{
 
 #submit-button:hover{
   background-color: #9ddaa5;
+  color: #000000;
+}
+
+#reset-button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  font-size: 10px;
+  background-color: #9c3c3d;
+  border-radius: 10px;
+  color: #FFFFFF;
+  transition-duration: 0.3s;
+  margin-top: 30px;
+}
+
+#reset-button:hover{
+  background-color: #da9da1;
   color: #000000;
 }
 

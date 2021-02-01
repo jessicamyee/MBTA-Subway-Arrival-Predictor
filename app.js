@@ -88,8 +88,8 @@ const getPrediction = async (e) => {
 }
 
 //* Add event listener to the submit button
-const form = document.querySelector('form')
-form.addEventListener('submit', getPrediction)
+const submit = document.querySelector('form')
+submit.addEventListener('submit', getPrediction)
 
 
 
@@ -172,6 +172,19 @@ const removePredictionDisplays = () => {
     div.removeChild(div.lastChild)
   }
 }
+
+
+
+
+//* Add event listeners to the reset button to remove results and reset the search bar
+const reset = document.querySelector('#reset-button')
+reset.addEventListener("click", removePredictionDisplays);
+
+reset.addEventListener("click", () => {
+  document.querySelector('form').reset();
+})
+
+
 
 
 //*Sub-function for pt 2: This function converts the military date/time format to standard time
