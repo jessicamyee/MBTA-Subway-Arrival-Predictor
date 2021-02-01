@@ -1,21 +1,19 @@
 //Comment Legend
-//*This is highlighted, because it's important info
-//! This is an alert
-//TODO this is a todo
-//? This is a question
 
-
-//TODO: https://www.w3schools.com/howto/howto_js_cascading_dropdown.asp
+//! Main Function
+//* Sub-Function or Independent Function
+//General Comment
 
 
 
 
-//*API URL to see list of Subway stops (their ID, parent station) 
+
+
+// API URL to see list of Subway stops (their ID, parent station) 
 let stopsUrl = 'https://api-v3.mbta.com/stops?include=parent_station&filter[route_type]=0,1&api_key=1d4b621e1f544709887699295f22b466'
 
 
-//*Main Function 1 to trigger dropdown menu of stations
-
+//! Main Function (MF) 1 to TRIGGER dropdown menu of stations using data from the stopsURL API database
 let rawList = null;
 
 const getSubwayStops = async () => {
@@ -31,7 +29,7 @@ const getSubwayStops = async () => {
 getSubwayStops()
 
 
-//* Sub-function: to retrieve the list of stations in the dropdown menu
+//* Sub-function for MF1: to populate the list of stations in the dropdown menu
 const populateDropdown = (alphaSortedStopsList) => {
   let select = document.querySelector('#select-station')
   alphaSortedStopsList.forEach(stop => {
@@ -45,22 +43,7 @@ const populateDropdown = (alphaSortedStopsList) => {
 
 
 
-
-
-
-//* Sub-function: Given the raw list of stops and selected description (aka the station the user selects) and returns the corresponding parent station
-const getParentStationFromDescr = (rawList, selectedDescription) => {
-  let targetStop = null;
-  rawList.forEach(stop => {
-    if (selectedDescription === stop.attributes.description) {
-      targetStop = stop;
-    }
-  })
-  return targetStop.relationships.parent_station.data.id;
-}
-
-
-//* Main function Pt 2: This will trigger the command to retrieve predictions
+//! Main Function 2: This will trigger the command to retrieve predictions using the predictionURL API database
 const getPrediction = async (e) => {
   e.preventDefault()
   let description = document.querySelector('#select-station').value
@@ -87,14 +70,26 @@ const getPrediction = async (e) => {
   }
 }
 
-//* Add event listener to the submit button
+
+//* Sub-function for MF2: Given the station the user selects, return the corresponding parent station
+const getParentStationFromDescr = (rawList, selectedDescription) => {
+  let targetStop = null;
+  rawList.forEach(stop => {
+    if (selectedDescription === stop.attributes.description) {
+      targetStop = stop;
+    }
+  })
+  return targetStop.relationships.parent_station.data.id;
+}
+
+
+//* Independent Function: Add event listener to the submit button
 const submit = document.querySelector('form')
 submit.addEventListener('submit', getPrediction)
 
 
 
-
-//* Sub-function for pt 2: to create the box of prediction results
+//* Sub-function for MF2: Create the box of prediction results
 let predictionSection = document.querySelector('.prediction-results')
 
 const createPredictionBox = (prediction) => {
@@ -125,7 +120,7 @@ const createPredictionBox = (prediction) => {
 
 
 
-//* Sub-function for pt 2: Sorting function for sorting the prediction boxes. Priority to sort (route, then direction, then arrival time)
+//* Sub-function for MF2: Sorting function for sorting the prediction boxes. Priority to sort (route, then direction, then arrival time)
 const sortPredictionFunction = (predictionA, predictionB) => {
   return predictionA.relationships.route.data.id.localeCompare(predictionB.relationships.route.data.id) || predictionA.attributes.direction_id - predictionB.attributes.direction_id || moment(predictionA.attributes.arrival_time) - moment(predictionB.attributes.arrival_time)
 }
@@ -133,7 +128,7 @@ const sortPredictionFunction = (predictionA, predictionB) => {
 
 
 
-//* Sub-function for pt 2: Convert direction ID to direction name with purpose to be user-friendly
+//* Sub-function for MF2: Convert direction ID to direction name with purpose to be user-friendly
 
 const directionIdToDirectionName = (directionId, routeName) => {
   if (routeName.value === 'Red' || routeName.value === 'Orange') {
@@ -165,7 +160,7 @@ const directionIdToDirectionName = (directionId, routeName) => {
 }
 
 
-//*This function removes prediction results when you search for a new prediction
+//* Sub-function for MF2: Remove prediction results when you search for a new prediction
 const removePredictionDisplays = () => {
   let div = document.querySelector('.prediction-results')
   while (div.lastChild) {
@@ -176,7 +171,7 @@ const removePredictionDisplays = () => {
 
 
 
-//* Add event listeners to the reset button to remove results and reset the search bar
+//* Independent Function: Add event listeners to the reset button to remove results and reset the search bar
 const reset = document.querySelector('#reset-button')
 reset.addEventListener("click", removePredictionDisplays);
 
@@ -187,13 +182,13 @@ reset.addEventListener("click", () => {
 
 
 
-//*Sub-function for pt 2: This function converts the military date/time format to standard time
+//*Sub-function for MF2: This function converts the military date/time format to standard time
 const convertMilitaryToStandardTime = (originalDateTime) => {
   return moment(originalDateTime).format('MMMM Do YYYY, h:mm a')
 }
 
 
-//*Add event listeners to the resource buttons
+//* Independent Function: Add event listeners to the resource buttons
 
 const navigateToSubwaySchedule = () => {
   window.open('https://www.mbta.com/schedules/subway', '_blank')
@@ -208,12 +203,6 @@ const navigateToStationInfo = () => {
 document.querySelector('#subway-schedule').addEventListener('click', navigateToSubwaySchedule);
 document.querySelector('#bus-schedule').addEventListener('click', navigateToBusSchedule);
 document.querySelector('#station-info').addEventListener('click', navigateToStationInfo);
-
-
-
-
-//TODO EXTRA: Write function - so that the dropdown menu also has a search capability
-//*This will be a generic function
 
 
 
