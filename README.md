@@ -124,13 +124,14 @@ API used: [Massachusetts Bay Transportation Authority (MBTA)](https://api-v3.mbt
 
 ## Code Snippet
 
-SECTION PENDING
-
 ```
-function reverse(string) {
-	// here is the code to reverse a string of text
+const sortPredictionFunction = (predictionA, predictionB) => {
+  return predictionA.relationships.route.data.id.localeCompare(predictionB.relationships.route.data.id) ||
+    predictionA.attributes.direction_id - predictionB.attributes.direction_id ||
+    moment(predictionA.attributes.arrival_time) - moment(predictionB.attributes.arrival_time)
 }
 ```
+This was my proudest code snippet of the MVP because this allowed me to explore more of sorting. I've always been used to just sorting under 1 criteria, but sorting by 3 criteria forced me to think beyond the algorithm to strategically brainstorm on how the prediction results should be ordered and displayed. 
 
 ## Change Log
 - Visual design of webapp changed slightly (compared to the initial wireframe) due to a better cohesive visual experience.
