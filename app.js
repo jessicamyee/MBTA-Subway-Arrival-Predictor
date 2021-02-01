@@ -1,4 +1,4 @@
-//Comment Legend
+//COMMENT LEGEND: VS Code Extension (BetterComment) was used 
 
 //! Main Function
 //* Sub-Function or Independent Function
