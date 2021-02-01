@@ -112,15 +112,15 @@ API used: [Massachusetts Bay Transportation Authority (MBTA)](https://api-v3.mbt
 | Convert time layout from MBTA's military time to 12-hour view | H | 1hr| 1hr | 1hr |
 | QA and debugging for API connection | H | 3hrs| 0.25hr | 0.25hr |
 | Enable capability to remove search results upon new entry | M | 1hr| 0.17hr | 0.17hr |
-| QA and debugging for removal of search entry | H | 1hr| 0hr | 0hr |
+| QA and debugging for removal of search entry | H | 1hr| 1hr | 1hr |
 | Write out the last section of webapp - resources  | M | 1hr| 0.5hr | 0.5hr |
 | Add MBTA's twitter feed | M | 2hrs| 0.5hr | 0.5hr |
 | Text decoration: font style, font size, font colors | L | 2hrs| 2.5hrs | 2.5hrs |
 | Using Flexbox: Elements (image, boxes) resizing and alignment | H | 3hrs| 2.5hrs | 2.5hrs |
 | Non-text element decoration (submit box, etc) | L | 2hrs| 4hrs | 4hrs |
 | Implementing responsive design to webapp | H | 3hrs| 3hrs | 3hrs |
-| Final webapp QA | H | 2hrs|  |  |
-| Total | H | 41.5hrs|  |  |
+| Final webapp QA | H | 2hrs| 1hr | 1hr |
+| Total | H | 41.5hrs| 29.25hrs | 29.25hrs |
 
 ## Code Snippet
 
